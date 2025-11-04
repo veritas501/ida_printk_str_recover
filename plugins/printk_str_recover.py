@@ -25,7 +25,7 @@ def looks_like_printk_prefixed(ea):
     if b1 < ord("0") or b1 > ord("7"):
         return False
     b2 = idc.get_wide_byte(ea + 2)
-    return b2 == ord(" ") or is_printable_ascii(b2)
+    return b2 in (0x09, 0x0A ,0x0D, 0x20) or is_printable_ascii(b2)
 
 
 def read_c_string(ea, maxlen=0x10000):
